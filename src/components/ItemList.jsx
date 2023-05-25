@@ -2,15 +2,14 @@ import { useEffect, useState } from "react";
 import ItemCard from "./ItemCard";
 import { getAllItems } from "../utils/utils.js";
 
-function ItemList() {
+function ItemList({selectedCat}) {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    getAllItems().then((d) => {
+    getAllItems(selectedCat).then((d) => {
       setItems(d);
     });
-  }, []);
-  console.log(items);
+  }, [selectedCat]);
 
   return (
     <section>

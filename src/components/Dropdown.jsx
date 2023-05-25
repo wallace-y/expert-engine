@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAllCategories } from "../utils/utils.js";
 
-function Dropdown() {
+function Dropdown({selectedCat, setSelectedCat}) {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -9,27 +9,22 @@ function Dropdown() {
       setCategories(d);
     });
   }, []);
-
   return (
     <section>
       <h1>List of Categories</h1>
       <label htmlFor="category-choice">Filter by category:</label>
-      <input
-        list="all-categories"
-        id="category-choice"
-        name="category-choice"
-      ></input>
-
-      <datalist id="all-categories">
+    
+      <select id="all-categories" onChange={(event) => { setSelectedCat(event.target.value) }}>
+        <option value="" defaultValue>Show All</option>
         {categories.map((category) => {
           return (
             <option
               key={category.category_name}
-              value={category.category_name}
-            />
+              defaultValue={category.category_name}
+            > {category.category_name}</option>
           );
         })}
-      </datalist>
+      </select>
     </section>
   );
 }

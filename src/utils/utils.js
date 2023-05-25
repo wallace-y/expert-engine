@@ -8,8 +8,13 @@ export const getAllCategories = () => {
     });
 };
 
-export const getAllItems = () => {
-  return fetch("https://nc-marketplace-sem-4.onrender.com/api/items")
+export const getAllItems = (categoryName) => {
+  let url = "https://nc-marketplace-sem-4.onrender.com/api/items"
+  
+  if(categoryName){
+    url += `?category_name=${categoryName}`
+  }
+  return fetch(url)
     .then((res) => {
       return res.json();
     })
