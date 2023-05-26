@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const getAllCategories = () => {
   return fetch("https://nc-marketplace-sem-4.onrender.com/api/categories")
     .then((res) => {
@@ -35,7 +37,7 @@ export const checkValidUser = (username) => {
     });
 };
 
-export const getAllItemsInBasket= (username) =>{
+export const getAllItemsInBasket = (username) => {
   let url = `https://nc-marketplace-sem-4.onrender.com/api/users/${username}/basket`;
 
   return fetch(url)
@@ -45,5 +47,39 @@ export const getAllItemsInBasket= (username) =>{
     .then(({ items }) => {
       return items;
     });
- }
-export default { getAllCategories, getAllItems, checkValidUser, getAllItemsInBasket };
+};
+
+export const removeItemFromBasket = (username, item_id) => {
+  let url = `https://nc-marketplace-sem-4.onrender.com/api/users/${username}/basket/${item_id}`;
+  axios.delete(url);
+};
+
+export const addItemToBasket = (username, item) => {
+  let url = `https://nc-marketplace-sem-4.onrender.com/api/users/${username.username}/basket`;
+
+  axios.post(url, { item_id: item.item_id });
+};
+
+export const addUser = (username, avatar_url) => {
+  let url = `https://nc-marketplace-sem-4.onrender.com/api/users`;
+
+  checkValidUser(username)
+    .then((res) => {
+      if (res === undefined) {
+        axios.post(url, { username, avatar_url });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export default {
+  getAllCategories,
+  getAllItems,
+  checkValidUser,
+  getAllItemsInBasket,
+  removeItemFromBasket,
+  addItemToBasket,
+  addUser,
+};

@@ -1,18 +1,28 @@
-import { useState } from "react";
-import { Link , Navigate} from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, Navigate } from "react-router-dom";
 import { useContext } from "react";
 import { LoggedInContext } from "../contexts/LoggedIn";
-import { getAllItemsInBasket } from "../utils/utils";
+import { getAllItemsInBasket, removeItemFromBasket } from "../utils/utils";
+import { CurrentUserContext } from "../contexts/CurrentUser";
 
 function Basket({ basketItems, setBasketItems, setPreviousOrders }) {
   const [items, setItems] = useState([]);
   const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
+  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
 
-  if(!loggedIn){
-    return <Navigate to="/login" />
+  if (loggedIn) {
+    useEffect(() => {
+      getAllItemsInBasket(currentUser.username).then((d) => {
+        setItems(d);
+      });
+    }, [items]);
   }
 
-  let totalCost = basketItems.reduce((a, b) => {
+  if (!loggedIn) {
+    return <Navigate to="/login" />;
+  }
+
+  let totalCost = items.reduce((a, b) => {
     return a + b.price;
   }, 0);
 
@@ -21,34 +31,26 @@ function Basket({ basketItems, setBasketItems, setPreviousOrders }) {
   return (
     <section>
       <h1>Here's what is in your basket</h1>
-      {getAllItemsInBasket(username).then((items) => {
-        console.log(items)
-        items.map((thing, index) => {
-          let formattedPrice = thing.price / 100;
-  
-          return (
-            <div key={index}>
-              <p>{thing.item_name}</p>
-              <p>£{formattedPrice}</p>
-              <button
-                onClick={() => {
-                  setBasketItems((currentList) => {
-                    let newList = [...currentList];
-                    newList.splice(index, 1);
-                    return newList;
-                  });
-                }}
-              >
-                Remove from basket
-              </button>
-            </div>
-          );
-        })
-      })
-      }
+      {items.map((thing, index) => {
+        let formattedPrice = thing.price / 100;
+
+        return (
+          <div key={index}>
+            <p>{thing.item_name}</p>
+            <p>£{formattedPrice}</p>
+            <button
+              onClick={() => {
+                removeItemFromBasket(currentUser.username, thing.item_id);
+              }}
+            >
+              Remove from basket
+            </button>
+          </div>
+        );
+      })}
 
       <p>Total cost {formattedTotalPrice}</p>
-      <Link to="/ordered">
+      {/* <Link to="/ordered">
         <button
           onClick={() => {
             setPreviousOrders((currentList) => {
@@ -61,7 +63,7 @@ function Basket({ basketItems, setBasketItems, setPreviousOrders }) {
         >
           Buy now
         </button>
-      </Link>
+      </Link> */}
       <button>Keep shopping</button>
     </section>
   );

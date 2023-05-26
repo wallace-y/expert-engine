@@ -1,6 +1,6 @@
 import { Link, Navigate, useSearchParams } from "react-router-dom";
 import { useContext, useState } from "react";
-import { checkValidUser } from "../utils/utils";
+import { checkValidUser, addUser } from "../utils/utils";
 import { CurrentUserContext } from "../contexts/CurrentUser";
 import { LoggedInContext } from "../contexts/LoggedIn";
 
@@ -19,7 +19,7 @@ function Login() {
           setValidUser(true);
           setLoggedIn(true);
           setCurrentUser(res);
-          return <Navigate to="/"/>
+          return <Navigate to="/" />;
         } else {
           setValidUser(false);
         }
@@ -27,6 +27,11 @@ function Login() {
       .catch((err) => {
         console.log(err);
       });
+  }
+
+  function handleSignUp(event) {
+    event.preventDefault();
+    addUser(username);
   }
 
   if (loggedIn) {
@@ -60,6 +65,18 @@ function Login() {
           id="username"
           name="username"
           placeholder="Enter your username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        ></input>
+        <button type="submit">Login</button>
+      </form>
+      <form onSubmit={handleLogin}>
+        <h1>Not a user? Sign up below</h1>
+        <label htmlFor="username">Username:</label>
+        <input
+          id="username"
+          name="username"
+          placeholder="Enter a username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         ></input>
