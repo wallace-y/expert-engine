@@ -8,6 +8,7 @@ import ListOfItems from "./components/ListOfItems";
 import SellItems from "./components/SellItems";
 import Basket from "./components/Basket";
 import CheckoutMessage from "./components/CheckoutMessage";
+import User from "./components/User";
 
 function App() {
   const [basketItems, setBasketItems] = useState([]);
@@ -41,6 +42,11 @@ function App() {
         <Route
           path="/ordered"
           element={<CheckoutMessage previousOrders={previousOrders} />}
+        ></Route>
+
+        <Route
+          path="/user"
+          element={<User previousOrders={previousOrders} /> }
         ></Route>
       </Routes>
     </>
