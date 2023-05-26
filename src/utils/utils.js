@@ -9,10 +9,10 @@ export const getAllCategories = () => {
 };
 
 export const getAllItems = (categoryName) => {
-  let url = "https://nc-marketplace-sem-4.onrender.com/api/items"
-  
-  if(categoryName){
-    url += `?category_name=${categoryName}`
+  let url = "https://nc-marketplace-sem-4.onrender.com/api/items";
+
+  if (categoryName) {
+    url += `?category_name=${categoryName}`;
   }
   return fetch(url)
     .then((res) => {
@@ -23,4 +23,16 @@ export const getAllItems = (categoryName) => {
     });
 };
 
-export default { getAllCategories, getAllItems };
+export const checkValidUser = (username) => {
+  let url = `https://nc-marketplace-sem-4.onrender.com/api/users/${username}`;
+
+  return fetch(url)
+    .then((res) => {
+      return res.json();
+    })
+    .then(({ user }) => {
+      return user;
+    });
+};
+
+export default { getAllCategories, getAllItems, checkValidUser };

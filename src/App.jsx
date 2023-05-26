@@ -9,16 +9,20 @@ import SellItems from "./components/SellItems";
 import Basket from "./components/Basket";
 import CheckoutMessage from "./components/CheckoutMessage";
 import User from "./components/User";
+import ToggleUser from "./components/ToggleUser";
+import Login from "./components/Login";
 
 function App() {
   const [basketItems, setBasketItems] = useState([]);
   const [previousOrders, setPreviousOrders] = useState([]);
 
   return (
-    <>
+    <div>
       <NavBar />
+      <ToggleUser />
       <Routes>
         <Route path="/" element={<WelcomeMessage />}></Route>
+        <Route path="/login" element={<Login />}></Route>
         <Route
           path="/items"
           element={
@@ -46,10 +50,10 @@ function App() {
 
         <Route
           path="/user"
-          element={<User previousOrders={previousOrders} /> }
+          element={<User previousOrders={previousOrders} />}
         ></Route>
       </Routes>
-    </>
+    </div>
   );
 }
 
