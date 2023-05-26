@@ -1,8 +1,16 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link , Navigate} from "react-router-dom";
+import { useContext } from "react";
+import { LoggedInContext } from "../contexts/LoggedIn";
+import { getAllItemsInBasket } from "../utils/utils";
 
 function Basket({ basketItems, setBasketItems, setPreviousOrders }) {
   const [items, setItems] = useState([]);
+  const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
+
+  if(!loggedIn){
+    return <Navigate to="/login" />
+  }
 
   let totalCost = basketItems.reduce((a, b) => {
     return a + b.price;
@@ -13,27 +21,32 @@ function Basket({ basketItems, setBasketItems, setPreviousOrders }) {
   return (
     <section>
       <h1>Here's what is in your basket</h1>
-      {basketItems.map((thing, index) => {
-        let formattedPrice = thing.price / 100;
+      {getAllItemsInBasket(username).then((items) => {
+        console.log(items)
+        items.map((thing, index) => {
+          let formattedPrice = thing.price / 100;
+  
+          return (
+            <div key={index}>
+              <p>{thing.item_name}</p>
+              <p>£{formattedPrice}</p>
+              <button
+                onClick={() => {
+                  setBasketItems((currentList) => {
+                    let newList = [...currentList];
+                    newList.splice(index, 1);
+                    return newList;
+                  });
+                }}
+              >
+                Remove from basket
+              </button>
+            </div>
+          );
+        })
+      })
+      }
 
-        return (
-          <div key={index}>
-            <p>{thing.item_name}</p>
-            <p>£{formattedPrice}</p>
-            <button
-              onClick={() => {
-                setBasketItems((currentList) => {
-                  let newList = [...currentList];
-                  newList.splice(index, 1);
-                  return newList;
-                });
-              }}
-            >
-              Remove from basket
-            </button>
-          </div>
-        );
-      })}
       <p>Total cost {formattedTotalPrice}</p>
       <Link to="/ordered">
         <button

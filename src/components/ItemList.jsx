@@ -20,6 +20,7 @@ function ItemList({ selectedCat, basketItems, setBasketItems }) {
             key={item.item_id}
             item={item}
             setBasketItems={setBasketItems}
+            
           />
         );
       })}

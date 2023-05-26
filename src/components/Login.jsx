@@ -1,4 +1,4 @@
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, Navigate, useSearchParams } from "react-router-dom";
 import { useContext, useState } from "react";
 import { checkValidUser } from "../utils/utils";
 import { CurrentUserContext } from "../contexts/CurrentUser";
@@ -19,6 +19,7 @@ function Login() {
           setValidUser(true);
           setLoggedIn(true);
           setCurrentUser(res);
+          return <Navigate to="/"/>
         } else {
           setValidUser(false);
         }

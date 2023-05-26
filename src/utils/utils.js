@@ -35,4 +35,15 @@ export const checkValidUser = (username) => {
     });
 };
 
-export default { getAllCategories, getAllItems, checkValidUser };
+export const getAllItemsInBasket= (username) =>{
+  let url = `https://nc-marketplace-sem-4.onrender.com/api/users/${username}/basket`;
+
+  return fetch(url)
+    .then((res) => {
+      return res.json();
+    })
+    .then(({ items }) => {
+      return items;
+    });
+ }
+export default { getAllCategories, getAllItems, checkValidUser, getAllItemsInBasket };

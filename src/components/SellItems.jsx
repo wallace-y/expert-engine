@@ -1,12 +1,19 @@
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { getAllCategories } from "../utils/utils";
 import { useEffect, useState } from "react";
+import { LoggedInContext } from "../contexts/LoggedIn";
+import { useContext } from "react";
+
 
 function SellItems() {
   const [sellItemCategories, setSellItemCategories] = useState([]);
-
+  const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
   const [formSubmitted, setFormSubmitted] = useState(false);
+
+  if(!loggedIn){
+    return <Navigate to="/login" />
+  }
 
   useEffect(() => {
     getAllCategories().then((d) => {
@@ -33,6 +40,10 @@ function SellItems() {
         console.log(error);
       });
   };
+
+  if(!loggedIn){
+    return <Navigate to="/login" />
+  }
 
   if (formSubmitted) {
     return (
