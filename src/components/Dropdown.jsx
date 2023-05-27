@@ -11,30 +11,31 @@ function Dropdown({ selectedCat, setSelectedCat }) {
   }, []);
   return (
     <section>
-      <h1>List of Categories</h1>
       <label htmlFor="category-choice">Filter by category:</label>
-
-      <select
-        id="all-categories"
-        onChange={(event) => {
-          setSelectedCat(event.target.value);
-        }}
-      >
-        <option value="" defaultValue>
-          Show All
-        </option>
-        {categories.map((category) => {
-          return (
-            <option
-              key={category.category_name}
-              defaultValue={category.category_name}
-            >
-              {" "}
-              {category.category_name}
-            </option>
-          );
-        })}
-      </select>
+      <div className="form-group">
+        <select
+          className="form-control"
+          id="all-categories"
+          onChange={(event) => {
+            setSelectedCat(event.target.value);
+          }}
+        >
+          <option value="" defaultValue>
+            Show All
+          </option>
+          {categories.map((category) => {
+            return (
+              <option
+                key={category.category_name}
+                defaultValue={category.category_name}
+              >
+                {" "}
+                {category.category_name}
+              </option>
+            );
+          })}
+        </select>
+      </div>
     </section>
   );
 }
