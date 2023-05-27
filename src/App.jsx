@@ -19,7 +19,7 @@ function App() {
   return (
     <div>
       <NavBar />
-      <ToggleUser />
+      {/* <ToggleUser /> */}
       <Routes>
         <Route path="/" element={<WelcomeMessage />}></Route>
         <Route path="/login" element={<Login />}></Route>

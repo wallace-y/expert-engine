@@ -12,20 +12,22 @@ const ToggleUser = () => {
       setLoggedIn(false);
       setCurrentUser();
     }
-
-    console.log("Toggled");
   };
 
   if (loggedIn) {
     return (
       <Link>
-        <button onClick={toggleLogout}>Logout</button>
+        <button className="btn btn-light" onClick={toggleLogout}>
+          Logout
+        </button>
       </Link>
     );
   } else {
     return (
       <Link to="/login">
-        <button onClick={toggleLogout}>Login</button>
+        <button className="btn btn-light" onClick={toggleLogout}>
+          Login
+        </button>
       </Link>
     );
   }

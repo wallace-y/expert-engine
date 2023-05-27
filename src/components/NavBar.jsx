@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
+import ToggleUser from "./ToggleUser";
 
 function NavBar() {
   return (
     <nav className="navbar navbar-dark bg-dark">
       <div className="container-fluid">
         <span class="navbar-brand mb-0 h1">Marketplace of Junk</span>
+        <ToggleUser />
 
         <button
           class="navbar-toggler"
