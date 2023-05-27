@@ -5,14 +5,13 @@ import { useEffect, useState } from "react";
 import { LoggedInContext } from "../contexts/LoggedIn";
 import { useContext } from "react";
 
-
 function SellItems() {
   const [sellItemCategories, setSellItemCategories] = useState([]);
   const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
   const [formSubmitted, setFormSubmitted] = useState(false);
 
-  if(!loggedIn){
-    return <Navigate to="/login" />
+  if (!loggedIn) {
+    return <Navigate to="/login" />;
   }
 
   useEffect(() => {
@@ -41,64 +40,95 @@ function SellItems() {
       });
   };
 
-  if(!loggedIn){
-    return <Navigate to="/login" />
+  if (!loggedIn) {
+    return <Navigate to="/login" />;
   }
 
   if (formSubmitted) {
     return (
-      <section>
+      <section className="text-center mt-2">
         <h2>Item successfully added</h2>
         <p>What would you like to do now?</p>
-        <Link to="/">Home</Link>
-        <Link to="/items">Buy</Link>
-        <Link to="/sellItems">Sell</Link>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <Link to="/" className="link-dark">Home</Link>
+        <Link to="/items" className="link-dark">Buy</Link>
+        <Link to="/sellItems" className="link-dark">Sell</Link>
+          </div>
+ 
+    
       </section>
     );
   }
 
   return (
-    <section>
-      <h1>Sell Items TBC</h1>
+    <section className="text-center">
+      <h1>Sell an item</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="item_name">Item Name:</label>
-        <input type="text" id="item_name" name="item_name" />
-        <br />
-        <br />
+        <div className="form-group">
+          <label htmlFor="item_name">Item Name:</label>
+          <input
+            type="text"
+            id="item_name"
+            name="item_name"
+            className="form-control"
+          />
+        </div>
 
-        <label htmlFor="img_url">Item Image URL:</label>
-        <input type="text" id="img_url" name="img_url" />
-        <br />
-        <br />
+        <div className="form-group">
+          <label htmlFor="img_url">Item Image URL:</label>
+          <input
+            type="text"
+            id="img_url"
+            name="img_url"
+            className="form-control"
+          />
+        </div>
 
-        <label htmlFor="price">Price:</label>
-        <input type="number" id="price" name="price" />
-        <br />
-        <br />
+        <div className="form-group">
+          <label htmlFor="price">Price:</label>
+          <input
+            type="number"
+            id="price"
+            name="price"
+            className="form-control"
+          />
+        </div>
 
-        <label htmlFor="description">Description:</label>
-        <input type="text" id="description" name="description" />
-        <br />
-        <br />
+        <div className="form-group">
+          <label htmlFor="description">Description:</label>
+          <input
+            type="text"
+            id="description"
+            name="description"
+            className="form-control"
+          />
+        </div>
+        <div className="form-group mb-2">
+          <label htmlFor="sellItem-category-choice">Category:</label>
+          <select
+            id="sellItem-categories"
+            name="category_name"
+            className="form-control"
+          >
+            <option value="">Select Selling Item Category</option>
 
-        <label htmlFor="sellItem-category-choice">Category:</label>
-        <select id="sellItem-categories" name="category_name">
-          <option value="">Select Selling Item Category</option>
+            {sellItemCategories.map((category) => {
+              return (
+                <option
+                  key={category.category_name}
+                  value={category.category_name}
+                >
+                  {" "}
+                  {category.category_name}
+                </option>
+              );
+            })}
+          </select>
+        </div>
 
-          {sellItemCategories.map((category) => {
-            return (
-              <option
-                key={category.category_name}
-                value={category.category_name}
-              >
-                {" "}
-                {category.category_name}
-              </option>
-            );
-          })}
-        </select>
-        <br />
-        <button> Submit</button>
+        <div className="text-center">
+          <button className="btn btn-dark"> Submit</button>
+        </div>
       </form>
     </section>
   );
