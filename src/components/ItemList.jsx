@@ -14,16 +14,17 @@ function ItemList({ selectedCat, basketItems, setBasketItems }) {
   return (
     <section>
       <h1>List of items:</h1>
-      {items.map((item) => {
-        return (
-          <ItemCard
-            key={item.item_id}
-            item={item}
-            setBasketItems={setBasketItems}
-            
-          />
-        );
-      })}
+      <div className="row justify-content-center">
+        {items.map((item) => {
+          return (
+            <ItemCard
+              key={item.item_id}
+              item={item}
+              setBasketItems={setBasketItems}
+            />
+          );
+        })}
+      </div>
     </section>
   );
 }

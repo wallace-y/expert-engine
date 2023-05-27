@@ -20,26 +20,28 @@ function ItemCard({ item }) {
 
   let formattedPrice = `£ ${price / 100}`;
   return (
-    <div className="card" style={{ width: "18rem" }}>
-      <img
-        style={{width: "12rem"}}
-        src={img_url}
-        className="card-img-top"
-        alt={`a picture of ${item_name}`}
-      />
-      <div class="card-body">
-        <h5 class="card-title">{item_name}</h5>
-        <p class="card-text">{description}</p>
-        <p class="card-text">{category_name}</p>
-        <p class="card-text">{formattedPrice}</p>
-        <button
-          className="btn btn-dark"
-          onClick={() => {
-            return handleClick();
-          }}
-        >
-          Add to basket
-        </button>
+    <div className="col-md-3 col-sm-6">
+      <div className="card" style={{ width: "12rem" }}>
+        <img
+          style={{ width: "100%" }}
+          src={img_url}
+          className="card-img-top"
+          alt={`a picture of ${item_name}`}
+        />
+        <div class="card-body">
+          <h5 class="card-title">{item_name}</h5>
+          <p class="card-text">{description}</p>
+          <p class="card-text">{category_name}</p>
+          <p class="card-text">{formattedPrice}</p>
+          <button
+            className="btn btn-dark"
+            onClick={() => {
+              return handleClick();
+            }}
+          >
+            Add to basket
+          </button>
+        </div>
       </div>
     </div>
   );
