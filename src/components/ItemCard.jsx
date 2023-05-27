@@ -20,9 +20,10 @@ function ItemCard({ item }) {
 
   let formattedPrice = `£ ${price / 100}`;
   return (
-    <div className="col-md-3 col-sm-6">
-      <div className="card" style={{ width: "12rem" }}>
+    <div className="col">
+      <div className="card shadow-sm">
         <img
+        height=""
           style={{ width: "100%" }}
           src={img_url}
           className="card-img-top"

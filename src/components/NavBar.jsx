@@ -4,9 +4,12 @@ import ToggleUser from "./ToggleUser";
 function NavBar() {
   return (
     <nav className="navbar navbar-dark bg-dark">
-      <div className="container-fluid">
-        <span className="navbar-brand mb-0 h1">Marketplace of Junk</span>
-        <ToggleUser />
+      <div className="container-fluid d-flex">
+        <div className="d-flex">
+          <span className="navbar-brand mb-0 h1">Marketplace of Junk</span>
+
+          <ToggleUser />
+        </div>
 
         <button
           className="navbar-toggler"

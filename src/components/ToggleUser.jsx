@@ -12,25 +12,30 @@ const ToggleUser = () => {
       setLoggedIn(false);
       setCurrentUser("");
     } else {
-      setLoggedIn(true);
+      // setLoggedIn(true);
+      <Navigate to="/login" />;
     }
   };
 
   if (loggedIn) {
     return (
-      <Link>
-        <button className="btn btn-light" onClick={toggleLogout}>
-          Logout
-        </button>
-      </Link>
+      <div className="ml-auto">
+        <Link className="">
+          <button className="btn btn-light" onClick={toggleLogout}>
+            Logout
+          </button>
+        </Link>
+      </div>
     );
   } else {
     return (
-      <Link to="/login">
-        <button className="btn btn-light" onClick={toggleLogout}>
-          Login
-        </button>
-      </Link>
+      <div className="ml-auto">
+        <Link to="/login">
+          <button className="btn btn-light" onClick={toggleLogout}>
+            Login
+          </button>
+        </Link>
+      </div>
     );
   }
 };

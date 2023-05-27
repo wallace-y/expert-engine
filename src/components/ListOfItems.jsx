@@ -6,8 +6,8 @@ function ListOfItems({ basketItems, setBasketItems }) {
   const [selectedCat, setSelectedCat] = useState("");
 
   return (
-    <section className="container-fluid text-center bg-light">
-      <h1 >Available Items</h1>
+    <section className="container text-center bg-light">
+      <h1 className="mt-2">Available Items</h1>
       <Dropdown selectedCat={selectedCat} setSelectedCat={setSelectedCat} />
       <ItemList
         basketItems={basketItems}

@@ -13,7 +13,7 @@ function ItemList({ selectedCat, basketItems, setBasketItems }) {
 
   return (
     <section className="mt-2">
-      <div className="row justify-content-center">
+      <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         {items.map((item) => {
           return (
             <ItemCard
