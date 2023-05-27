@@ -29,11 +29,6 @@ function Login() {
       });
   }
 
-  function handleSignUp(event) {
-    event.preventDefault();
-    addUser(username);
-  }
-
   if (loggedIn) {
     return <h1 className="text-center">Welcome {currentUser.username}</h1>;
   }

@@ -63,10 +63,11 @@ export const addItemToBasket = (username, item) => {
 export const addUser = (username, avatar_url) => {
   let url = `https://nc-marketplace-sem-4.onrender.com/api/users`;
 
-  checkValidUser(username)
+  return checkValidUser(username)
     .then((res) => {
       if (res === undefined) {
-        axios.post(url, { username, avatar_url });
+       return axios.post(url, { username, avatar_url });
+        
       }
     })
     .catch((err) => {
