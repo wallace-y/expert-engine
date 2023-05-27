@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { LoggedInContext } from "../contexts/LoggedIn";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { CurrentUserContext } from "../contexts/CurrentUser";
 
 const ToggleUser = () => {
@@ -8,9 +8,11 @@ const ToggleUser = () => {
   const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
 
   const toggleLogout = () => {
-    if (currentUser) {
+    if (loggedIn) {
       setLoggedIn(false);
-      setCurrentUser();
+      setCurrentUser("");
+    } else {
+      setLoggedIn(true);
     }
   };
 

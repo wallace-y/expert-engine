@@ -5,7 +5,7 @@ import { LoggedInContext } from "../contexts/LoggedIn";
 import { getAllItemsInBasket, removeItemFromBasket } from "../utils/utils";
 import { CurrentUserContext } from "../contexts/CurrentUser";
 
-function Basket({ basketItems, setBasketItems, setPreviousOrders }) {
+function Basket() {
   const [items, setItems] = useState([]);
   const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
@@ -50,20 +50,7 @@ function Basket({ basketItems, setBasketItems, setPreviousOrders }) {
       })}
 
       <p>Total cost {formattedTotalPrice}</p>
-      {/* <Link to="/ordered">
-        <button
-          onClick={() => {
-            setPreviousOrders((currentList) => {
-              let newList = [...currentList];
-              newList.push(basketItems);
-              setBasketItems([]);
-              return newList;
-            });
-          }}
-        >
-          Buy now
-        </button>
-      </Link> */}
+
       <button>Keep shopping</button>
     </section>
   );

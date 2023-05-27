@@ -13,9 +13,6 @@ import ToggleUser from "./components/ToggleUser";
 import Login from "./components/Login";
 
 function App() {
-  const [basketItems, setBasketItems] = useState([]);
-  const [previousOrders, setPreviousOrders] = useState([]);
-
   return (
     <div>
       <NavBar />
@@ -23,35 +20,12 @@ function App() {
       <Routes>
         <Route path="/" element={<WelcomeMessage />}></Route>
         <Route path="/login" element={<Login />}></Route>
-        <Route
-          path="/items"
-          element={
-            <ListOfItems
-              basketItems={basketItems}
-              setBasketItems={setBasketItems}
-            />
-          }
-        ></Route>
+        <Route path="/items" element={<ListOfItems />}></Route>
         <Route path="/sellItems" element={<SellItems />}></Route>
-        <Route
-          path="/basket"
-          element={
-            <Basket
-              basketItems={basketItems}
-              setBasketItems={setBasketItems}
-              setPreviousOrders={setPreviousOrders}
-            />
-          }
-        ></Route>
-        <Route
-          path="/ordered"
-          element={<CheckoutMessage previousOrders={previousOrders} />}
-        ></Route>
+        <Route path="/basket" element={<Basket />}></Route>
+        <Route path="/ordered" element={<CheckoutMessage />}></Route>
 
-        <Route
-          path="/user"
-          element={<User previousOrders={previousOrders} />}
-        ></Route>
+        <Route path="/user" element={<User />}></Route>
       </Routes>
     </div>
   );

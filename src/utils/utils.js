@@ -74,6 +74,18 @@ export const addUser = (username, avatar_url) => {
     });
 };
 
+export const getAllOrdersByUser = (username) => {
+  let url = `https://nc-marketplace-sem-4.onrender.com/api/users/${username}/orders`;
+
+  return fetch(url)
+    .then((res) => {
+      return res.json();
+    })
+    .then(({ items }) => {
+      return items;
+    });
+};
+
 export default {
   getAllCategories,
   getAllItems,
@@ -82,4 +94,5 @@ export default {
   removeItemFromBasket,
   addItemToBasket,
   addUser,
+  getAllOrdersByUser,
 };

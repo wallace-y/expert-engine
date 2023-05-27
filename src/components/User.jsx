@@ -1,49 +1,55 @@
-import { Link , Navigate} from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { CurrentUserContext } from "../contexts/CurrentUser";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { LoggedInContext } from "../contexts/LoggedIn";
+import { getAllOrdersByUser } from "../utils/utils";
 
-
-function User({ previousOrders }) {
+function User() {
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
   const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
+  const [items, setItems] = useState([]);
+
+  if (!loggedIn) {
+    return <Navigate to="/login" />;
+  }
 
   if (loggedIn) {
-    if (previousOrders.length === 0) {
+    useEffect(() => {
+      getAllOrdersByUser(currentUser.username).then((d) => {
+        setItems(d);
+      });
+    }, [items]);
+  }
+
+  if (loggedIn) {
+    if (items.length === 0) {
       return (
-        <div>
+        <div className="text-center">
           <h1>Hi {currentUser.username}</h1>
-          <p>You didn't order anything!</p>
-          <Link to="/">Go Home</Link>
+          <p>You haven't ordered anything yet.</p>
+          <Link to="/" className="link-dark">
+            Go Home
+          </Link>
         </div>
       );
     }
     return (
-      <section>
-        <h2>This is what you ordered:</h2>
-        {previousOrders.map((order, orderIndex) => {
-          return (
-            <div style={{ border: "1px solid red" }}>
-              <p>Order: {orderIndex + 1}</p>
-              {order.map((thing, index) => {
-                let formattedPrice = thing.price / 100;
+      <section className="text-center">
+        <h1>Here are your previous orders:</h1>
+        {items.map((thing, index) => {
+          let formattedPrice = thing.price / 100;
 
-                return (
-                  <div key={index}>
-                    <p>{thing.item_name}</p>
-                    <p>£{formattedPrice}</p>
-                  </div>
-                );
-              })}
+          return (
+            <div key={index}>
+              <p>{thing.item_name}</p>
+              <p>£{formattedPrice}</p>
             </div>
           );
         })}
-        <Link to="/">Go Home</Link>
+
+        <Link to="/" className="link-dark">Go Home</Link>
       </section>
     );
-  } else {
-    return <Navigate to="/login" />
-    //<h1>Please login first to see previous orders</h1>;
   }
 }
 
