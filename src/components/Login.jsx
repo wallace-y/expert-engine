@@ -60,17 +60,26 @@ function Login() {
     <section className="text-center container">
       <form onSubmit={handleLogin}>
         <h1>Please login below</h1>
-      
-        <label htmlFor="username">Username:</label>
-        <input
-          className="form-control"
-          id="username"
-          name="username"
-          placeholder="Enter your username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        ></input>
-        <button className="btn btn-dark" type="submit">Login</button>
+        <div className="row">
+          <div className="col-md-6 offset-md-3">
+            <div className="form-group d-flex align-items-center">
+              <label htmlFor="username" className="mr-2">
+                Username:
+              </label>
+              <input
+                className="form-control"
+                id="username"
+                name="username"
+                placeholder="Enter your username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              ></input>
+              <button className="btn btn-dark ml-2" type="submit">
+                Login
+              </button>
+            </div>
+          </div>
+        </div>
       </form>
       <form onSubmit={handleLogin}>
         <h1 className="mt-2">
