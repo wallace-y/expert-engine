@@ -35,11 +35,11 @@ function Login() {
   }
 
   if (loggedIn) {
-    return <h1>Welcome {currentUser.username}</h1>;
+    return <h1 className="text-center">Welcome {currentUser.username}</h1>;
   }
   if (!validUser) {
     return (
-      <section>
+      <section className="text-center">
         <form onSubmit={handleLogin}>
           <h1>Invalid username. Please sign-up or try again</h1>
           <label htmlFor="username">Username:</label>
@@ -57,30 +57,28 @@ function Login() {
   }
 
   return (
-    <section>
+    <section className="text-center container">
       <form onSubmit={handleLogin}>
         <h1>Please login below</h1>
+
         <label htmlFor="username">Username:</label>
         <input
+          className="form-control"
           id="username"
           name="username"
           placeholder="Enter your username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         ></input>
-        <button type="submit">Login</button>
+        <button className="btn btn-dark" type="submit">Login</button>
       </form>
       <form onSubmit={handleLogin}>
-        <h1>Not a user? Sign up below</h1>
-        <label htmlFor="username">Username:</label>
-        <input
-          id="username"
-          name="username"
-          placeholder="Enter a username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        ></input>
-        <button type="submit">Login</button>
+        <h1 className="mt-2">
+          Not a user? Sign up{" "}
+          <Link to="/signup" className="link-dark">
+            here
+          </Link>
+        </h1>
       </form>
     </section>
   );
