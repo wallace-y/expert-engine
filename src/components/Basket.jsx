@@ -10,13 +10,11 @@ function Basket() {
   const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
 
-  if (loggedIn) {
-    useEffect(() => {
-      getAllItemsInBasket(currentUser.username).then((d) => {
-        setItems(d);
-      });
-    }, [items]);
-  }
+  useEffect(() => {
+    getAllItemsInBasket(currentUser.username).then((d) => {
+      setItems(d);
+    });
+  }, [items]);
 
   if (!loggedIn) {
     return <Navigate to="/login" />;
@@ -52,7 +50,9 @@ function Basket() {
 
       <p>Total cost {formattedTotalPrice}</p>
 
-      <Link className="link-dark" to="/items">Keep shopping</Link>
+      <Link className="link-dark" to="/items">
+        Keep shopping
+      </Link>
     </section>
   );
 }

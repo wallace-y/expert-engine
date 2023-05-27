@@ -9,16 +9,14 @@ function User() {
   const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
   const [items, setItems] = useState([]);
 
+  useEffect(() => {
+    getAllOrdersByUser(currentUser.username).then((d) => {
+      setItems(d);
+    });
+  }, [items]);
+
   if (!loggedIn) {
     return <Navigate to="/login" />;
-  }
-
-  if (loggedIn) {
-    useEffect(() => {
-      getAllOrdersByUser(currentUser.username).then((d) => {
-        setItems(d);
-      });
-    }, [items]);
   }
 
   if (loggedIn) {
@@ -47,7 +45,9 @@ function User() {
           );
         })}
 
-        <Link to="/" className="link-dark">Go Home</Link>
+        <Link to="/" className="link-dark">
+          Go Home
+        </Link>
       </section>
     );
   }
