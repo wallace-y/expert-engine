@@ -29,16 +29,17 @@ function Basket() {
   let formattedTotalPrice = `£ ${totalCost / 100}`;
 
   return (
-    <section>
+    <section className="text-center">
       <h1>Here's what is in your basket</h1>
       {items.map((thing, index) => {
         let formattedPrice = thing.price / 100;
 
         return (
-          <div key={index}>
-            <p>{thing.item_name}</p>
+          <div className="mb-2" key={index}>
+            <h3>{thing.item_name}</h3>
             <p>£{formattedPrice}</p>
             <button
+              className="btn btn-dark"
               onClick={() => {
                 removeItemFromBasket(currentUser.username, thing.item_id);
               }}
@@ -51,7 +52,7 @@ function Basket() {
 
       <p>Total cost {formattedTotalPrice}</p>
 
-      <button>Keep shopping</button>
+      <Link className="link-dark" to="/items">Keep shopping</Link>
     </section>
   );
 }
