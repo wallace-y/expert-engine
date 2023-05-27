@@ -12,8 +12,7 @@ function ItemList({ selectedCat, basketItems, setBasketItems }) {
   }, [selectedCat]);
 
   return (
-    <section>
-      <h1>List of items:</h1>
+    <section className="mt-2">
       <div className="row justify-content-center">
         {items.map((item) => {
           return (

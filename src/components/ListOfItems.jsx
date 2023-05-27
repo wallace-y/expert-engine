@@ -7,7 +7,7 @@ function ListOfItems({ basketItems, setBasketItems }) {
 
   return (
     <section className="container-fluid text-center bg-light">
-      <h1 >List of Available Items</h1>
+      <h1 >Available Items</h1>
       <Dropdown selectedCat={selectedCat} setSelectedCat={setSelectedCat} />
       <ItemList
         basketItems={basketItems}
