@@ -39,7 +39,7 @@ function User() {
 
           return (
             <div key={index}>
-              <p>{thing.item_name}</p>
+              <h3>{thing.item_name}</h3>
               <p>£{formattedPrice}</p>
             </div>
           );
