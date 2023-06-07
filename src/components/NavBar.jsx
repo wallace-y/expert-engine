@@ -1,16 +1,24 @@
 import { Link } from "react-router-dom";
 import ToggleUser from "./ToggleUser";
+import { useContext } from "react";
+import { LoggedInContext } from "../contexts/LoggedIn";
+import { CurrentUserContext } from "../contexts/CurrentUser";
 
 function NavBar() {
+  const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
+  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
+
   return (
     <nav className="navbar navbar-dark bg-dark">
       <div className="container-fluid d-flex">
-        <div className="d-flex">
+        <div className="d-flex  align-items-center">
           <span className="navbar-brand mb-0 h1">The Marketplace</span>
+          <span className="text-light mx-2">
+            You're logged in as {currentUser.username}
+          </span>
 
           <ToggleUser />
         </div>
-
         <button
           className="navbar-toggler"
           type="button"
