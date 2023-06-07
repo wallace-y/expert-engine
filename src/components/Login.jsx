@@ -30,22 +30,34 @@ function Login() {
   }
 
   if (loggedIn) {
-    return <h1 className="text-center">Welcome {currentUser.username}</h1>;
+    return <h1 className="text-center mt-5">Welcome {currentUser.username}</h1>;
   }
   if (!validUser) {
     return (
-      <section className="text-center">
+      <section className="text-center mt-5">
         <form onSubmit={handleLogin}>
           <h1>Invalid username. Please sign-up or try again</h1>
-          <label htmlFor="username">Username:</label>
-          <input
-            id="username"
-            name="username"
-            placeholder="Enter your username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          ></input>
-          <button type="submit">Login</button>
+          <div className="row">
+            <div className="col-md-6 offset-md-3">
+              <div className="form-group d-flex align-items-center mb-3">
+                <label className="mx-2" htmlFor="username">
+                  Username:
+                </label>
+                <input
+                  className="form-control"
+                  required
+                  id="username"
+                  name="username"
+                  placeholder="Enter your username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                ></input>
+              </div>
+              <button className="btn btn-dark ml-2" type="submit">
+                Login
+              </button>
+            </div>
+          </div>
         </form>
       </section>
     );
