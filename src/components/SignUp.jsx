@@ -27,11 +27,12 @@ function SignUp() {
         <h1>Please Sign Up Below</h1>
         <div className="row">
           <div className="col-md-6 offset-md-3">
-            <div className="form-group d-flex align-items-center">
-              <label htmlFor="username" className="mr-2">
+            <div className="form-group d-flex align-items-center mb-3">
+              <label htmlFor="username" className="mx-2">
                 Username:
               </label>
               <input
+                required
                 className="form-control"
                 id="username"
                 name="username"
@@ -39,10 +40,10 @@ function SignUp() {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               ></input>
-              <button className="btn btn-dark ml-2" type="submit">
-                Sign Up
-              </button>
             </div>
+            <button className="btn btn-dark ml-2" type="submit">
+              Sign Up
+            </button>
           </div>
         </div>
       </form>

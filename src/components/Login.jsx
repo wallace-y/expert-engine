@@ -52,37 +52,37 @@ function Login() {
   }
 
   return (
-    <section className="text-center container">
+    <section className="text-center container mt-5">
       <form onSubmit={handleLogin}>
         <h1>Please login below</h1>
         <div className="row">
           <div className="col-md-6 offset-md-3">
-            <div className="form-group d-flex align-items-center">
-              <label htmlFor="username" className="mr-2">
+            <div className="form-group d-flex align-items-center mb-3">
+              <label htmlFor="username" className="mx-2">
                 Username:
               </label>
               <input
-                className="form-control"
+                required
+                className="form-control "
                 id="username"
                 name="username"
                 placeholder="Enter your username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               ></input>
-              <button className="btn btn-dark ml-2" type="submit">
-                Login
-              </button>
             </div>
+            <button className="btn btn-dark ml-2" type="submit">
+              Login
+            </button>
           </div>
         </div>
       </form>
       <form onSubmit={handleLogin}>
-        <h1 className="mt-2">
-          Not a user? Sign up{" "}
+        <h3 className="mt-5">
           <Link to="/signup" className="link-dark">
-            here
+            Not a user? Sign up here
           </Link>
-        </h1>
+        </h3>
       </form>
     </section>
   );
