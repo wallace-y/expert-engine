@@ -6,7 +6,7 @@ function NavBar() {
     <nav className="navbar navbar-dark bg-dark">
       <div className="container-fluid d-flex">
         <div className="d-flex">
-          <span className="navbar-brand mb-0 h1">Marketplace of Junk</span>
+          <span className="navbar-brand mb-0 h1">The Marketplace</span>
 
           <ToggleUser />
         </div>

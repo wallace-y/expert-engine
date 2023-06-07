@@ -8,7 +8,7 @@ function WelcomeMessage() {
           <i class="fa-regular fa-trash-can fa-2xl"></i>
         </p>
         <h1 class="display-5 fw-bold text-body-emphasis">
-          Welcome to the Marketplace of Junk
+          Welcome to <strong>the Marketplace</strong>
         </h1>
         <div class="col-lg-6 mx-auto">
           <p class="lead mb-4">What would you like to do today?</p>

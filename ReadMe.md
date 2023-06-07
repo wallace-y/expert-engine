@@ -1,8 +1,10 @@
-# Marketplace of Junk App
-Welcome to the Marketplace of Junk app! This app allows users to browse and buy various fictional items that are listed for sale. It provides a convenient platform for sellers to showcase their items and for buyers to explore and purchase them.
+# Marketplace App
+Welcome to the Marketplace! This app allows users to browse and buy various fictional items that are listed for sale. It provides a convenient platform for sellers to showcase their items and for buyers to explore and purchase them.
+
+The hosted repo can be found [here](https://marketplace-application.onrender.com/).
 
 ## Features
-The Marketplace of Junk app offers the following features:
+The Marketplace offers the following features:
 
 - User Authentication: Users can create an account and log in to access personalized features and information.
 - Navigation: The app includes a navigation bar at the top, allowing users to easily move between different sections of the app. The available sections are:
@@ -22,7 +24,7 @@ The Marketplace of Junk app offers the following features:
 - Confirm your purchase.
 
 ## Technologies Used
-The Marketplace of Junk app is built using the following:
+The Marketplace is built using the following:
 
 - React
 - Vite
