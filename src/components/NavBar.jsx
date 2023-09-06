@@ -13,9 +13,13 @@ function NavBar() {
       <div className="container-fluid d-flex">
         <div className="d-flex  align-items-center">
           <span className="navbar-brand mb-0 h1">The Marketplace</span>
-          <span className="text-light mx-2">
-            You're logged in as {currentUser.username}
-          </span>
+          {loggedIn ? (
+            <span className="text-light mx-2">
+              You're logged in as {currentUser.username}
+            </span>
+          ) : (
+            false
+          )}
 
           <ToggleUser />
         </div>
