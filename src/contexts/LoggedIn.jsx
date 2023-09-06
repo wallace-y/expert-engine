@@ -4,7 +4,7 @@ import { useState } from "react";
 export const LoggedInContext = createContext();
 
 export const LoggedInProvider = ({ children }) => {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
 
   return (
     <LoggedInContext.Provider value={{ loggedIn, setLoggedIn }}>
