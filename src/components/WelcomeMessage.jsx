@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import "../css/WelcomeMessage.css";
 
 function WelcomeMessage() {
   return (
-    <section>
+    <section className="welcome-message-bg">
       <div class="px-4 py-5 my-5 text-center">
         <p>
           <i class="fa-regular fa-trash-can fa-2xl"></i>

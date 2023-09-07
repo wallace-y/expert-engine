@@ -3,13 +3,14 @@ import ToggleUser from "./ToggleUser";
 import { useContext } from "react";
 import { LoggedInContext } from "../contexts/LoggedIn";
 import { CurrentUserContext } from "../contexts/CurrentUser";
+import "../css/NavBar.css";
 
 function NavBar() {
   const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
 
   return (
-    <nav className="navbar navbar-dark bg-dark">
+    <nav className="navbar navbar-dark navbar-bg">
       <div className="container-fluid d-flex">
         <div className="d-flex  align-items-center">
           <span className="navbar-brand mb-0 h1">The Marketplace</span>
