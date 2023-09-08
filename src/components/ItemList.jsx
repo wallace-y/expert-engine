@@ -4,12 +4,24 @@ import { getAllItems } from "../utils/utils.js";
 
 function ItemList({ selectedCat, basketItems, setBasketItems }) {
   const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    getAllItems(selectedCat).then((d) => {
-      setItems(d);
-    });
+    try {
+      setLoading(true);
+      getAllItems(selectedCat).then((d) => {
+        setItems(d);
+      });
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
   }, [selectedCat]);
+
+  if (loading) {
+    return <h1>Loading items please wait...</h1>;
+  }
 
   return (
     <section className="mt-2">
